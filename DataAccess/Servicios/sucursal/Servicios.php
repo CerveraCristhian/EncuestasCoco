@@ -26,7 +26,7 @@ return $comando->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
 // Aquí puedes clasificar el error dependiendo de la excepción
 // para presentarlo en la respuesta Json
-return -1;
+return $e;
 }
 }
 public static function SelectAllsucursal()
