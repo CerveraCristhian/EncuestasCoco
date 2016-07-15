@@ -15,14 +15,17 @@ function __construct()
 public static function Insertencuesta_contestada($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden)
 {
 $consulta = "INSERT INTO encuesta_contestada(id_cliente, id_ecuesta, id_mesero, codigo, fecha, hora, estatus, numero_orden) values (?, ?, ?, ?, ?, ?, ?, ?)";
+$consulta2 = 'Select @@identity as idlast';
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
 $comando->execute(array($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden));
 // Capturar primera fila del resultado
+//$last_id = Database::getInstance()->getDb()->lastInsertId();
+$comando = Database::getInstance()->getDb()->prepare($consulta2);
+$comando -> execute();
 return $comando->fetchAll(PDO::FETCH_ASSOC);
-
 } catch (PDOException $e) {
 // Aquí puedes clasificar el error dependiendo de la excepción
 // para presentarlo en la respuesta Json

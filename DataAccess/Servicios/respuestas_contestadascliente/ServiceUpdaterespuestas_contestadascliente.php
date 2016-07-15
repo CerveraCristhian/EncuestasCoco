@@ -5,7 +5,7 @@ $objDatos = json_decode(file_get_contents("php://input"));
 $respuesta_contestadasclienterespuesta = $objDatos->respuesta_contestadasclienterespuesta;
 $respuestas_contestadasclienteencuestaid = $objDatos->respuestas_contestadasclienteencuestaid;
 $respuesta_contestadaclienteid = $objDatos->respuesta_contestadaclienteid;
-$metas = Meta::Updaterespuestas_contestadascliente($respuesta_contestadasclienterespuesta, $respuestas_contestadasclienteencuestaid, $respuesta_contestadaclienteid);
+$metas = Meta2::Updaterespuestas_contestadascliente($respuesta_contestadasclienterespuesta, $respuestas_contestadasclienteencuestaid, $respuesta_contestadaclienteid);
 if ($metas) {
 
 $datos["estado"] = 1;

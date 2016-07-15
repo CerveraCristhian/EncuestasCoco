@@ -72,7 +72,7 @@
                     <div class="modal-body">
                         <div ng-repeat="report in value">
                             <label>
-                                <input type="radio" name="{{report.id_pregunta}}" value="{{report.id_respuesta}}">{{report.descripcionrespuesta}}</input>
+                                <input type="radio" name="plolo[{{report.id_pregunta}}]" value="{{report.id_respuesta}}">{{report.descripcionrespuesta}}</input>
                             </label>
                             <br>
                         </div>
@@ -99,6 +99,7 @@
             $.post('../../DataAccess/Servicios/ResponderEncuesta/InsertarEncuesta.php', $(this).serialize(), function(data) {
                 // show the response
                 $('#questions').html(data);
+                sweetAlert("Gracias!", "Tus respuestas han sido enviadas correctamente!", "success");
             }).fail(function() {
                 // just in case posting your form failed
                 sweetAlert("Oops...", "Ocurrio un error en el servidor :(", "error");

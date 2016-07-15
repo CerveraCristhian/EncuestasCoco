@@ -4,7 +4,7 @@ require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
 $respuesta_contestadasclienterespuesta = $objDatos->respuesta_contestadasclienterespuesta;
 $respuestas_contestadasclienteencuestaid = $objDatos->respuestas_contestadasclienteencuestaid;
-$metas = Meta::Insertrespuestas_contestadascliente($respuesta_contestadasclienterespuesta, $respuestas_contestadasclienteencuestaid);
+$metas = Meta2::Insertrespuestas_contestadascliente($respuesta_contestadasclienterespuesta, $respuestas_contestadasclienteencuestaid);
 if ($metas) {
 
 $datos["estado"] = 1;

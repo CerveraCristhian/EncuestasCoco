@@ -2,7 +2,7 @@
 header('Content-type: application/json');
 require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
-$metas = Meta::SelectAllrespuestas_contestadascliente();
+$metas = Meta2::SelectAllrespuestas_contestadascliente();
 if ($metas) {
 
 $datos["estado"] = 1;
