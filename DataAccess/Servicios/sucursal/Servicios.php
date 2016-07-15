@@ -20,6 +20,7 @@ try {
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
 $comando->execute(array($id_empresa, $nombre, $direccion, $telefono, $contacto, $paquete, $email,$password));
+
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 

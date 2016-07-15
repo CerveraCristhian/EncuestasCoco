@@ -8,7 +8,20 @@ app.controller('encuestaController', function ($scope, $http) {
     $scope.id_encuesta = null;
     $scope.encuesta = [];
     $scope.descripcionrespuesta = null;
+    ObtenerRecompensas();
+    InicializacionComponentes();
 
+
+    function ObtenerRecompensas() {
+        var parametros = { method: 'selectrecompensas' }
+        $http.post("../../Commun/commun.php", parametros)
+            .success(function (data) {
+                $scope.recompensas = data;
+            })
+            .error(function (error) {
+            })
+
+    }
 
     $http.post("../../DataAccess/Servicios/encuesta/ServiceSelectAllencuesta.php")
         .success(function (data) {
@@ -17,10 +30,11 @@ app.controller('encuestaController', function ($scope, $http) {
         })
         .error(function (error) { })
 
+
+
     $scope.ActivarEncuesta = function (data) {
         $scope.encuestaid = data.id_encuesta;
         if (data.estatus == 0) {
-
             var parametros = {
                 id_sucursal: data.id_sucursal
             }
@@ -65,24 +79,24 @@ app.controller('encuestaController', function ($scope, $http) {
                 confirmButtonText: "Desactivar",
                 closeOnConfirm: false
             }, function () {
-                
-                    var parametros = {
-                        id_encuesta: data.id_encuesta
-                    }
-                    $scope.sucursal = [];
-                    $http.post("../../DataAccess/Servicios/encuesta/ServiceDesactivarEncuesta.php", parametros)
-                        .success(function (data) {
-                            if (data.estado == '1') {
-                                swal("¡Encuesta desactivada!", "¡Tu encuesta se ha desactivado!", "success")
-                                $http.post("../../DataAccess/Servicios/encuesta/ServiceSelectAllencuesta.php")
-                                    .success(function (data) {
-                                        $scope.encuesta = data;
-                                    })
-                            }
 
-                        })
-                        .error(function (error) { })
-             
+                var parametros = {
+                    id_encuesta: data.id_encuesta
+                }
+                $scope.sucursal = [];
+                $http.post("../../DataAccess/Servicios/encuesta/ServiceDesactivarEncuesta.php", parametros)
+                    .success(function (data) {
+                        if (data.estado == '1') {
+                            swal("¡Encuesta desactivada!", "¡Tu encuesta se ha desactivado!", "success")
+                            $http.post("../../DataAccess/Servicios/encuesta/ServiceSelectAllencuesta.php")
+                                .success(function (data) {
+                                    $scope.encuesta = data;
+                                })
+                        }
+
+                    })
+                    .error(function (error) { })
+
 
             });
 
@@ -120,11 +134,16 @@ app.controller('encuestaController', function ($scope, $http) {
             if ($scope.id_encuesta == null) {
                 var parametros = {
                     id_sucursal: $scope.sucursalSelected.id_sucursal,
-                    estatus: $scope.estatus,
+                    estatus: 0,
                     fecha_activacion: $scope.fecha_activacion,
                     porcentaje: $scope.porcentaje,
                     fecha_finalizacion: $scope.fecha_finalizacion,
-                    id_encuesta: $scope.id_encuesta
+                    id_encuesta: $scope.id_encuesta,
+                    id_recompensa: $scope.recompensaSelected.id_recompensa,
+                    emailenvio: $scope.emailenvio,
+                    bienvenida: $scope.bienvenida,
+                    despedida: $scope.despedida,
+                    disculpa: $scope.disculpa
                 }
                 $http.post("../../DataAccess/Servicios/encuesta/ServiceInsertencuesta.php", parametros)
                     .success(function (data) {
@@ -135,6 +154,10 @@ app.controller('encuestaController', function ($scope, $http) {
                         $scope.porcentaje = null;
                         $scope.fecha_finalizacion = null;
                         $scope.id_encuesta = null;
+                        $scope.emailenvio = null;
+                        $scope.bienvenida = null;
+                        $scope.despedida = null;
+                        $scope.disculpa = null;
                         $http.post("../../DataAccess/Servicios/encuesta/ServiceSelectAllencuesta.php")
                             .success(function (data) {
                                 $scope.encuesta = data;
@@ -151,7 +174,12 @@ app.controller('encuestaController', function ($scope, $http) {
                     fecha_activacion: $scope.fecha_activacion,
                     porcentaje: $scope.porcentaje,
                     fecha_finalizacion: $scope.fecha_finalizacion,
-                    id_encuesta: $scope.id_encuesta
+                    id_encuesta: $scope.id_encuesta,
+                    emailenvio: $scope.emailenvio,
+                    bienvenida: $scope.bienvenida,
+                    despedida: $scope.despedida,
+                    disculpa: $scope.disculpa
+
                 }
                 $http.post("../../DataAccess/Servicios/encuesta/ServiceUpdateencuesta.php", parametros)
                     .success(function (data) {
@@ -162,6 +190,10 @@ app.controller('encuestaController', function ($scope, $http) {
                         $scope.porcentaje = null;
                         $scope.fecha_finalizacion = null;
                         $scope.id_encuesta = null;
+                        $scope.emailenvio = null;
+                        $scope.bienvenida = null;
+                        $scope.despedida = null;
+                        $scope.disculpa = null;
                         $http.post("../../DataAccess/Servicios/encuesta/ServiceSelectAllencuesta.php")
                             .success(function (data) {
                                 $scope.encuesta = data;
@@ -237,14 +269,6 @@ app.controller('encuestaController', function ($scope, $http) {
             .error(function (error) { })
     }
 
-
-    $scope.AddRespuesta = function (data) {
-
-
-
-    }
-
-
     $scope.PreguntaSelected = function (data) {
         $scope.preguntaseleccionadaid = data.id_pregunta;
         var parametros = {
@@ -258,15 +282,13 @@ app.controller('encuestaController', function ($scope, $http) {
             })
             .error(function (error) { })
     }
-
-
     $scope.GuardarPregunta = function () {
         if (true) {
 
             if ($scope.id_pregunta == null) {
                 var parametros = {
                     id_encuesta: $scope.id_encuesta,
-                    tipo_pregunta: $scope.tipo_pregunta,
+                    tipo_pregunta: $scope.tipoSelected.id,
                     descripcion: $scope.descripcion,
                     id_pregunta: $scope.id_pregunta
                 }
@@ -294,7 +316,7 @@ app.controller('encuestaController', function ($scope, $http) {
             } else {
                 var parametros = {
                     id_encuesta: $scope.id_encuesta,
-                    tipo_pregunta: $scope.tipo_pregunta,
+                    tipo_pregunta: $scope.tipoSelected.id,
                     descripcion: $scope.descripcion,
                     id_pregunta: $scope.id_pregunta
                 }
@@ -330,27 +352,27 @@ app.controller('encuestaController', function ($scope, $http) {
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Si, ¡Eliminar!",
             closeOnConfirm: false,
-            closeOnCancel:false
+            closeOnCancel: false
         }, function (isConfirm) {
-            if(isConfirm){
-            var parametros = {
-                id_pregunta: data.id_pregunta
+            if (isConfirm) {
+                var parametros = {
+                    id_pregunta: data.id_pregunta
+                }
+                $http.post("../../DataAccess/Servicios/pregunta/ServiceDeletepregunta.php", parametros)
+                    .success(function (data) {
+                        swal("¡Eliminado!", "¡Registro eliminado correctamente!", "success");
+                        ActualizarContenido();
+                    });
             }
-            $http.post("../../DataAccess/Servicios/pregunta/ServiceDeletepregunta.php", parametros)
-                .success(function (data) {
-                    swal("¡Eliminado!", "¡Registro eliminado correctamente!", "success");
-                    ActualizarContenido();
-                });
-            }
-            else{
- ActualizarContenido();
+            else {
+                ActualizarContenido();
 
             }
 
         })
 
 
-        
+
 
 
     }
@@ -369,17 +391,12 @@ app.controller('encuestaController', function ($scope, $http) {
             })
             .error(function (error) { })
     }
-
-
-
     $scope.EditarRespuesta = function (data) {
 
         $scope.id_respuesta = data.id_respuesta;
         $("#descripcionrespuesta" + data.id_pregunta).val(data.descripcion);
 
     }
-
-
     $scope.GuardarRespuesta = function (g) {
         if (true) {
 
@@ -437,8 +454,6 @@ app.controller('encuestaController', function ($scope, $http) {
             }
         }
     }
-
-
     $scope.EliminarRespuesta = function (data) {
         swal({
             title: "¿Desea eliminar el elemento seleccionado?",
@@ -469,6 +484,20 @@ app.controller('encuestaController', function ($scope, $http) {
 
         })
 
+    }
+
+    function InicializacionComponentes() {
+        $scope.tipopregunta = [{
+            id: 1,
+            label: 'Validacion'
+        }, {
+                id: 2,
+                label: 'Negativa',
+
+            }, {
+                id: 3,
+                label: 'Neutra'
+            }];
     }
 
 });

@@ -7,7 +7,12 @@ $estatus = $objDatos->estatus;
 $fecha_activacion = $objDatos->fecha_activacion;
 $porcentaje = $objDatos->porcentaje;
 $fecha_finalizacion = $objDatos->fecha_finalizacion;
-$metas = Meta::Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion);
+$id_recompensa = $objDatos->id_recompensa;
+$emailenvio = $objDatos->emailenvio;
+$bienvenida = $objDatos->bienvenida;
+$despedida = $objDatos->despedida;
+$disculpa = $objDatos->disculpa;
+$metas = Meta::Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion,$id_recompensa,$emailenvio, $bienvenida,$despedida,$disculpa);
 if ($metas) {
 
 $datos["estado"] = 1;

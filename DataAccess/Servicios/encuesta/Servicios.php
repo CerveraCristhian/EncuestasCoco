@@ -12,21 +12,21 @@ class Meta
 function __construct()
 {
 }
-public static function Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion)
+public static function Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion,$id_recompensa,$emailenvio,$bienvenida,$despedida,$disculpa)
 {
-$consulta = "INSERT INTO encuesta(id_sucursal, estatus, fecha_activacion, porcentaje, fecha_finalizacion) values (?, ?, ?, ?, ?)";
+$consulta = "INSERT INTO encuesta(id_sucursal, estatus, fecha_activacion, porcentaje, fecha_finalizacion, id_recompensa, emailenvio, bienvenida, despedida,disculpa) values (?, ?, ?, ?, ?, ? ,?,?,?,?)";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute(array($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion));
+$comando->execute(array($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion, $id_recompensa,$emailenvio,$bienvenida,$despedida,$disculpa));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
 // Aquí puedes clasificar el error dependiendo de la excepción
 // para presentarlo en la respuesta Json
-return -1;
+return $e;
 }
 }
 public static function SelectAllencuesta()

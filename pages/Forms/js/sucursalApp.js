@@ -1,5 +1,5 @@
 var app = angular.module('sucursalApp', ['directivas']);
-app.controller('sucursalController', function($scope, $http) {
+app.controller('sucursalController', function ($scope, $http) {
     $scope.id_empresa = null;
     $scope.nombre = null;
     $scope.direccion = null;
@@ -10,30 +10,30 @@ app.controller('sucursalController', function($scope, $http) {
     $scope.id_sucursal = null;
     $scope.sucursal = [];
 
-$scope.paquetes = [{
-  id: 1,
-  label: 'Paquete 1'
-}, {
-  id: 2,
-  label: 'Paquete 2',
-  
-}];
+    $scope.paquetes = [{
+        id: 1,
+        label: 'Paquete 1'
+    }, {
+            id: 2,
+            label: 'Paquete 2',
+
+        }];
 
     $http.post("../../DataAccess/Servicios/sucursal/ServiceSelectAllsucursal.php")
-        .success(function(data) {
+        .success(function (data) {
             $scope.sucursal = data;
         })
-        .error(function(error) {})
+        .error(function (error) { })
 
     $scope.empresa = [];
     $http.post("../../DataAccess/Servicios/empresa/ServiceSelectAllempresa.php")
-        .success(function(data) {
+        .success(function (data) {
             $scope.empresa = data;
         })
-        .error(function(error) {})
+        .error(function (error) { })
 
 
-    $scope.Guardar = function() {
+    $scope.Guardar = function () {
         if (true) {
 
             if ($scope.id_sucursal == null) {
@@ -49,7 +49,7 @@ $scope.paquetes = [{
                     password: $scope.password
                 }
                 $http.post("../../DataAccess/Servicios/sucursal/ServiceInsertsucursal.php", parametros)
-                    .success(function(data) {
+                    .success(function (data) {
                         swal("¡Registro Guardado!", "¡Registro guardado correctamente!", "success")
                         $scope.id_empresa = null;
                         $scope.nombre = null;
@@ -60,12 +60,12 @@ $scope.paquetes = [{
                         $scope.email = null;
                         $scope.id_sucursal = null;
                         $http.post("../../DataAccess/Servicios/sucursal/ServiceSelectAllsucursal.php")
-                            .success(function(data) {
+                            .success(function (data) {
                                 $scope.sucursal = data;
                             })
 
                     })
-                    .error(function(error) {
+                    .error(function (error) {
 
                     })
             } else {
@@ -80,7 +80,7 @@ $scope.paquetes = [{
                     id_sucursal: $scope.id_sucursal
                 }
                 $http.post("../../DataAccess/Servicios/sucursal/ServiceUpdatesucursal.php", parametros)
-                    .success(function(data) {
+                    .success(function (data) {
                         swal("¡Registro Guardado!", "¡Registro actualizado correctamente!", "success")
                         $scope.id_empresa = null;
                         $scope.nombre = null;
@@ -91,7 +91,7 @@ $scope.paquetes = [{
                         $scope.email = null;
                         $scope.id_sucursal = null;
                         $http.post("../../DataAccess/Servicios/sucursal/ServiceSelectAllsucursal.php")
-                            .success(function(data) {
+                            .success(function (data) {
                                 $scope.sucursal = data;
                             })
 
@@ -100,7 +100,7 @@ $scope.paquetes = [{
             }
         }
     }
-    $scope.Editar = function(data) {
+    $scope.Editar = function (data) {
         $scope.id_empresa = data.id_empresa;
         $scope.nombre = data.nombre;
         $scope.direccion = data.direccion;
@@ -110,7 +110,7 @@ $scope.paquetes = [{
         $scope.email = data.email;
         $scope.id_sucursal = data.id_sucursal;
     }
-    $scope.EliminarSeleccionado = function(data) {
+    $scope.EliminarSeleccionado = function (data) {
         swal({
             title: "¿Desea eliminar el elemento seleccionado?",
             text: "¡El registro se eliminara permanentemente!",
@@ -119,13 +119,13 @@ $scope.paquetes = [{
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Si, ¡Eliminar!",
             closeOnConfirm: false
-        }, function() {
+        }, function () {
 
             var parametros = {
                 id_sucursal: data.id_sucursal
             }
             $http.post("../../DataAccess/Servicios/sucursal/ServiceDeletesucursal.php", parametros)
-                .success(function(data) {
+                .success(function (data) {
                     swal("¡Eliminado!", "¡Registro eliminado correctamente!", "success");
                     ActualizarContenido();
                 });
@@ -140,10 +140,10 @@ $scope.paquetes = [{
     function ActualizarContenido() {
 
         $http.post("../../DataAccess/Servicios/sucursal/ServiceSelectAllsucursal.php")
-            .success(function(data) {
+            .success(function (data) {
                 $scope.sucursal = data;
             })
-            .error(function(error) {})
+            .error(function (error) { })
 
     }
 });
