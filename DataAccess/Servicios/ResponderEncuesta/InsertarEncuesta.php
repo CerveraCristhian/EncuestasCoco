@@ -15,7 +15,7 @@ if (isset($_POST)) {
   //$aux2 = json_encode($encuesta);
     require_once '../encuesta_contestada/Servicios.php';
     $metas = Meta::Insertencuesta_contestada($encuesta['id_cliente'], $encuesta['id_ecuesta'], $encuesta['id_mesero'],
-    $encuesta['codigo'],   $encuesta['fecha'],   $encuesta['hora'],   $encuesta['estatus'],   $encuesta['numero_orden']);
+    $encuesta['codigo'],   $encuesta['fecha'],   $encuesta['hora'],   $encuesta['estatus'],   $encuesta['numero_orden'], $_POST['message']);
     if ($metas) {
         print_r('id -> '.$metas[0]['idlast']);
         foreach ($_POST['plolo'] as $clienterespuesta) {

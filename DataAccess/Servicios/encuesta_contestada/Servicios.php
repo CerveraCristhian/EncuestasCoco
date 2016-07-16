@@ -12,15 +12,15 @@ class Meta
 function __construct()
 {
 }
-public static function Insertencuesta_contestada($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden)
+public static function Insertencuesta_contestada($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden, $mensaje)
 {
-$consulta = "INSERT INTO encuesta_contestada(id_cliente, id_ecuesta, id_mesero, codigo, fecha, hora, estatus, numero_orden) values (?, ?, ?, ?, ?, ?, ?, ?)";
+$consulta = "INSERT INTO encuesta_contestada(id_cliente, id_ecuesta, id_mesero, codigo, fecha, hora, estatus, numero_orden, mensaje) values (?, ?, ?, ?, ?, ?, ?, ?,?)";
 $consulta2 = 'Select @@identity as idlast';
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute(array($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden));
+$comando->execute(array($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden, $mensaje));
 // Capturar primera fila del resultado
 //$last_id = Database::getInstance()->getDb()->lastInsertId();
 $comando = Database::getInstance()->getDb()->prepare($consulta2);
