@@ -81,14 +81,14 @@ return -1;
 }
 }
 
-public static function SelectAllencuesta()
+public static function SelectAllencuesta($id_sucuarsal)
 {
-$consulta = "select b.*,b.descripcion as descripcionpregunta ,c.*, c.descripcion as descripcionrespuesta from encuesta as a join pregunta as b on a.id_encuesta = b.id_encuesta join respuesta as c on b.id_pregunta=c.id_pregunta where a.estatus = 1";
+$consulta = "select b.*,b.descripcion as descripcionpregunta ,c.*, c.descripcion as descripcionrespuesta from encuesta as a join pregunta as b on a.id_encuesta = b.id_encuesta join respuesta as c on b.id_pregunta=c.id_pregunta where a.estatus = 1 and a.id_sucursal = ?";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute();
+$comando->execute(array($id_sucuarsal));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 
