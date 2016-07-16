@@ -77,7 +77,8 @@ app.controller('sucursalController', function ($scope, $http) {
                     contacto: $scope.contacto,
                     paquete: $scope.paquete.id,
                     email: $scope.email,
-                    id_sucursal: $scope.id_sucursal
+                    id_sucursal: $scope.id_sucursal,
+                    password : $scope.password
                 }
                 $http.post("../../DataAccess/Servicios/sucursal/ServiceUpdatesucursal.php", parametros)
                     .success(function (data) {

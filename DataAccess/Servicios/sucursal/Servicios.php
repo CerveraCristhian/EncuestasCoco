@@ -47,14 +47,14 @@ return $comando->fetchAll(PDO::FETCH_ASSOC);
 return -1;
 }
 }
-public static function Updatesucursal($id_empresa, $nombre, $direccion, $telefono, $contacto, $paquete, $email,$id_sucursal)
+public static function Updatesucursal($id_empresa, $nombre, $direccion, $telefono, $contacto, $paquete, $email,$id_sucursal,$password)
 {
-$consulta = "UPDATE sucursal SET id_empresa=?, nombre=?, direccion=?, telefono=?, contacto=?, paquete=?, email=? where id_sucursal= ?";
+$consulta = "UPDATE sucursal SET id_empresa=?, nombre=?, direccion=?, telefono=?, contacto=?, paquete=?, email=?, password =? where id_sucursal= ?";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute(array($id_empresa, $nombre, $direccion, $telefono, $contacto, $paquete, $email,$id_sucursal));
+$comando->execute(array($id_empresa, $nombre, $direccion, $telefono, $contacto, $paquete, $email,$password,$id_sucursal));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 

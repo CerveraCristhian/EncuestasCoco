@@ -9,7 +9,7 @@ $telefono = $objDatos->telefono;
 $contacto = $objDatos->contacto;
 $paquete = $objDatos->paquete;
 $email = $objDatos->email;
-$password = $objDatos->password;
+$password = md5($objDatos->password);
 $metas = Meta::Insertsucursal($id_empresa, $nombre, $direccion, $telefono, $contacto, $paquete, $email,$password);
 if ($metas) {
 
