@@ -1,53 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head ng-app="loginApp" ng-controller="loginController">
-	<title></title>
+
+<head>
+	<title>Sistema de Encuestas</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="dist/css/login.css">
+	<link rel="stylesheet" type="text/css" href="dist/css/skwave.css">
 </head>
-<script src="dist/js/angular.min.js"></script>
-<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="dist/css/login.css">
-<script src="dist/js/login.js"></script>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="pr-wrap">
-                <div class="pass-reset">
-                    <label>
-                        Enter the email you signed up with</label>
-                    <input type="email" placeholder="Email" />
-                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
-                </div>
-            </div>
-            <div class="wrap">
-                <p class="form-title">
-                    Sign In</p>
-                <form class="login" method="post" action="pages/Forms/webencuesta.html">
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
-                <button type="submit" class="btn btn-success btn-sm col-md-12" > Sign In  </button>
-                <div class="remember-forgot">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" />
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 forgot-pass-content">
-                            <a class="forgot-pass">Forgot Password</a>
-                        </div>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="wrap">
+					<p class="form-title">Log In</p>
+					<form id="userForm" class="login">
+						<input type="email" placeholder="Email" required/>
+						<input type="password" placeholder="Password" required/>
+						<button type="submit" class="btn btn-success btn-sm col-md-12"> Ingresar </button>
+					</form>
+				</div>
+			</div>
+			<div id="response">
 
-</div>
-
-
+			</div>
+		</div>
+	</div>
+	<script>
+	    $(document).ready(function() {
+	        $('#userForm').submit(function() {
+	            // show that something is loading
+							$('#response').html('<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>');
+	            $.post('DataAccess/Servicios/sucursal/ServiceLoginSucursal.php', $(this).serialize(), function(data) {
+	                // show the response
+									$('#response').html(data);
+	                sweetAlert("Gracias!", "Tus respuestas han sido enviadas correctamente!", "success");
+	            }).fail(function() {
+	                // just in case posting your form failed
+	                sweetAlert("Oops...", "Ocurrio un error en el servidor :(", "error");
+	            });
+	            // to prevent refreshing the whole page page
+	            return false;
+	        });
+	    });
+	</script>
 </body>
 </html>
