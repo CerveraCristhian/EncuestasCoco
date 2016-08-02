@@ -16,6 +16,7 @@ app.controller('quizController', function($scope, $http) {
         if (Validaciones()) {
             $("#datos").hide();
             $("#questions").show();
+
         }
     }
 

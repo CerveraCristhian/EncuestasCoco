@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="loginApp" ng-controller="loginController">
 
 <head>
 	<title>Sistema de Encuestas</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="dist/css/login.css">
 	<link rel="stylesheet" type="text/css" href="dist/css/skwave.css">
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+	<script src="sweetalert-master/dist/sweetalert-dev.js"></script>
+	<link rel="stylesheet" href="sweetalert-master/dist/sweetalert.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	<script src="loginApp.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -14,34 +19,14 @@
 				<div class="wrap">
 					<p class="form-title">Log In</p>
 					<form id="userForm" class="login">
-						<input type="email" placeholder="Email" required/>
-						<input type="password" placeholder="Password" required/>
-						<button type="submit" class="btn btn-success btn-sm col-md-12"> Ingresar </button>
+						<input type="text" placeholder="email" ng-model="email">
+						<input type="password" placeholder="Password" ng-model="password"/>
+						<span type="button" class="btn btn-success btn-sm col-md-12" ng-click="Login()"> Ingresar </span>
 					</form>
+					{{datin}}
 				</div>
-			</div>
-			<div id="response">
-
 			</div>
 		</div>
 	</div>
-	<script>
-	    $(document).ready(function() {
-	        $('#userForm').submit(function() {
-	            // show that something is loading
-							$('#response').html('<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>');
-	            $.post('DataAccess/Servicios/sucursal/ServiceLoginSucursal.php', $(this).serialize(), function(data) {
-	                // show the response
-									$('#response').html(data);
-	                sweetAlert("Gracias!", "Tus respuestas han sido enviadas correctamente!", "success");
-	            }).fail(function() {
-	                // just in case posting your form failed
-	                sweetAlert("Oops...", "Ocurrio un error en el servidor :(", "error");
-	            });
-	            // to prevent refreshing the whole page page
-	            return false;
-	        });
-	    });
-	</script>
 </body>
 </html>

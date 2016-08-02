@@ -35,7 +35,7 @@ form
     margin: 0 auto;
 }
 
-form.login input[type="email"], form.login input[type="password"]
+form.login input[type="text"], form.login input[type="password"]
 {
     width: 100%;
     margin: 0;
@@ -134,7 +134,7 @@ form.login a:hover
     margin-bottom: 15px;
 }
 
-.pass-reset input[type="email"]
+.pass-reset input[type="text"]
 {
     width: 100%;
     margin: 5px 0 0 0;

@@ -3,7 +3,7 @@ session_start();
 header('Content-type: application/json');
 require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
-$metas = Meta::SelectAllencuesta(2);
+$metas = Meta::SelectAllencuesta($_SESSION['idSucursal']);
 if ($metas) {
 
 $datos["estado"] = 1;
