@@ -1,8 +1,9 @@
 <?php
+session_start();
 header('Content-type: application/json');
 require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
-$id_sucursal = $objDatos->id_sucursal;
+$id_sucursal = $_SESSION['idSucursal'];
 $estatus = $objDatos->estatus;
 $fecha_activacion = $objDatos->fecha_activacion;
 $porcentaje = $objDatos->porcentaje;

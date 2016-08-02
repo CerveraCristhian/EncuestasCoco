@@ -1,4 +1,4 @@
-var app = angular.module('encuestaApp', ['directivas']);
+var app = angular.module('encuestaApp', ['directivas','textAngular']);
 app.controller('encuestaController', function ($scope, $http) {
     $scope.id_sucursal = null;
     $scope.estatus = null;

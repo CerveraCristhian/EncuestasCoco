@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html ng-app="encuestaApp" ng-controller="encuestaController">
 
@@ -31,7 +34,9 @@
   <!-- This is what you need -->
   <script src="../../sweetalert-master/dist/sweetalert-dev.js"></script>
   <link rel="stylesheet" href="../../sweetalert-master/dist/sweetalert.css">
-
+<script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular-rangy.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular-sanitize.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular.min.js'></script>
   <!--.......................-->
 </head>
 
@@ -67,6 +72,9 @@
 
                 <div class="form-group">
                   <label for="id_empresa">Empresa</label>
+                  <?php 
+echo $_SESSION['idSucursal'];
+?>
                   <select id="cmbEmpresa" class="form-control" ng-change="OnChangeEmpresa(empresaSelected)" ng-model="empresaSelected" ng-options="empresa.nombre for empresa in empresa.empresa">
                 </select>
                   <label for="id_sucursal">Sucursal</label><select id="cmbSucursal" class="form-control" ng-model="sucursalSelected"
@@ -85,7 +93,9 @@
                     id="emailenvio" placeholder="Capturar email de notificacion" ng-model="emailenvio">
                      <label for="bienvenida">Mensaje de Bienvenida</label><input type="text" class="form-control" name="bienvenida"
                     id="bienvenida" placeholder="Capturar mensaje de bienvenida" ng-model="bienvenida">
-                     <label for="despedida">Mensaje de Despedida</label><input type="text" class="form-control" name="despedida"
+                     <label for="despedida">Mensaje de Despedida</label>
+      <div text-angular ng-model="despedida"></div>
+                     <input type="text" class="form-control" name="despedida"
                     id="despedida" placeholder="Capturar email de notificacion" ng-model="despedida">
                      <label for="disculpa">Mensaje de Disculpa</label><input type="disculpa" class="form-control" name="disculpa"
                     id="disculpa" placeholder="Capturar email de notificacion" ng-model="disculpa">
