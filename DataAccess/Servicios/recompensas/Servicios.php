@@ -5,7 +5,7 @@
 * almacenadas en la base de datos
 */
 define('DS',DIRECTORY_SEPARATOR);
-require_once $_SERVER["DOCUMENT_ROOT"].'/'.'EncuestasCoco/DataAccess/Database.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/'.'ServicesGenerator2/Encuestas/EncuestasCoco/DataAccess/Database.php';
 class Meta
 {
 

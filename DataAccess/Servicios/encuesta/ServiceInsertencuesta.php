@@ -13,7 +13,8 @@ $emailenvio = $objDatos->emailenvio;
 $bienvenida = $objDatos->bienvenida;
 $despedida = $objDatos->despedida;
 $disculpa = $objDatos->disculpa;
-$metas = Meta::Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion,$id_recompensa,$emailenvio, $bienvenida,$despedida,$disculpa);
+$topemaximo = $objDatos->topemaximo;
+$metas = Meta::Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion,$id_recompensa,$emailenvio, $bienvenida,$despedida,$disculpa,$topemaximo);
 if ($metas) {
 
 $datos["estado"] = 1;

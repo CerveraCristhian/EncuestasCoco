@@ -10,7 +10,9 @@ app.controller('encuestaController', function ($scope, $http) {
     $scope.descripcionrespuesta = null;
     ObtenerRecompensas();
     InicializacionComponentes();
-
+    $scope.recompensaSelected = undefined;
+    document.getElementById("porcentaje").disabled = true;
+    document.getElementById("cmbRecompensa").disabled = true;
 
     function ObtenerRecompensas() {
         var parametros = { method: 'selectrecompensas' }
@@ -130,20 +132,24 @@ app.controller('encuestaController', function ($scope, $http) {
     }
     $scope.Guardar = function () {
         if (true) {
-
+            var recompensaid = null;
+            if($scope.recompensaSelected != undefined)
+            {
+                recompensaid = $scope.recompensaSelected.id_recompensa;
+            }
             if ($scope.id_encuesta == null) {
                 var parametros = {
-                    id_sucursal: $scope.sucursalSelected.id_sucursal,
                     estatus: 0,
                     fecha_activacion: $scope.fecha_activacion,
                     porcentaje: $scope.porcentaje,
                     fecha_finalizacion: $scope.fecha_finalizacion,
                     id_encuesta: $scope.id_encuesta,
-                    id_recompensa: $scope.recompensaSelected.id_recompensa,
+                    id_recompensa: recompensaid,
                     emailenvio: $scope.emailenvio,
                     bienvenida: $scope.bienvenida,
                     despedida: $scope.despedida,
-                    disculpa: $scope.disculpa
+                    disculpa: $scope.disculpa,
+                    topemaximo : $scope.topemaximo
                 }
                 $http.post("../../DataAccess/Servicios/encuesta/ServiceInsertencuesta.php", parametros)
                     .success(function (data) {
@@ -158,6 +164,7 @@ app.controller('encuestaController', function ($scope, $http) {
                         $scope.bienvenida = null;
                         $scope.despedida = null;
                         $scope.disculpa = null;
+                        $scope.topemaximo = null;
                         $http.post("../../DataAccess/Servicios/encuesta/ServiceSelectAllencuesta.php")
                             .success(function (data) {
                                 $scope.encuesta = data;
@@ -169,7 +176,6 @@ app.controller('encuestaController', function ($scope, $http) {
                     })
             } else {
                 var parametros = {
-                    id_sucursal: $scope.id_sucursal,
                     estatus: $scope.estatus,
                     fecha_activacion: $scope.fecha_activacion,
                     porcentaje: $scope.porcentaje,
@@ -485,6 +491,21 @@ app.controller('encuestaController', function ($scope, $http) {
         })
 
     }
+
+    $scope.ValidarTipoRecompensa = function(){
+     
+        if($scope.rdorecompensa == 'rdorecompensa'){
+        document.getElementById("porcentaje").disabled = true;
+        document.getElementById("cmbRecompensa").disabled = false;
+        $scope.porcentaje = null;
+    }
+    else{
+        if($scope.rdorecompensa == 'rdoporcentaje')
+        document.getElementById("cmbRecompensa").disabled = true;
+    $scope.recompensaSelected = null;
+    document.getElementById("porcentaje").disabled = false;
+    }
+    } 
 
     function InicializacionComponentes() {
         $scope.tipopregunta = [{

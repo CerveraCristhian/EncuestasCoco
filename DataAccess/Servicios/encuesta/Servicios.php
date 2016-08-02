@@ -12,14 +12,14 @@ class Meta
 function __construct()
 {
 }
-public static function Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion,$id_recompensa,$emailenvio,$bienvenida,$despedida,$disculpa)
+public static function Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion,$id_recompensa,$emailenvio,$bienvenida,$despedida,$disculpa,$topemaximo)
 {
-$consulta = "INSERT INTO encuesta(id_sucursal, estatus, fecha_activacion, porcentaje, fecha_finalizacion, id_recompensa, emailenvio, bienvenida, despedida,disculpa) values (?, ?, ?, ?, ?, ? ,?,?,?,?)";
+$consulta = "INSERT INTO encuesta(id_sucursal, estatus, fecha_activacion, porcentaje, fecha_finalizacion, id_recompensa, emailenvio, bienvenida, despedida,disculpa,topemaximo) values (?, ?, ?, ?, ?, ? ,?,?,?,?,?)";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute(array($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion, $id_recompensa,$emailenvio,$bienvenida,$despedida,$disculpa));
+$comando->execute(array($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion, $id_recompensa,$emailenvio,$bienvenida,$despedida,$disculpa,$topemaximo));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 
