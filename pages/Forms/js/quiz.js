@@ -22,7 +22,7 @@ app.controller('quizController', function($scope, $http) {
     }
 
     function Validaciones() {
-        if ($scope.mail == undefined && $scope.telefono == undefined) {
+        if ($scope.mail == undefined || $scope.telefono == undefined || $scope.meseroid == undefined || $scope.codigo == undefined) {
             sweetAlert("Oops...", "Olvidaste llenar algunos datos", "error");
             return false;
         } else {

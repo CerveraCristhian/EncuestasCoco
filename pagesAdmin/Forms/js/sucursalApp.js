@@ -148,4 +148,37 @@ app.controller('sucursalController', function ($scope, $http) {
             .error(function (error) { })
 
     }
+
+
+    $scope.Enviar = function (data) {
+        var parametros = {
+            id_sucursal: data.id_sucursal
+        }
+        $http.post("../../DataAccess/Servicios/encuesta/ServiceReporte.php", parametros)
+            .success(function (data) {
+              if(data.estado == 1){
+                swal("Email Enviado!", "", "success");
+                $scope.datin = data;
+                EnviarResultados(data);
+              }else{
+                swal("Algo malo sucedio :S!", "Hubo un error en el envio del reporte", "error");
+              }
+            }).error(function (error) {
+            })
+    }
+
+    function EnviarResultados($datos){
+      var parametros = {
+          encuesta: $datos.encuesta
+      }
+      $http.post("../../MailPDF/SendMailPDF.php", parametros)
+          .success(function (data) {
+            $scope.datin = data;
+          }).error(function (error) {
+          })
+    }
+
+
+
+
 });
