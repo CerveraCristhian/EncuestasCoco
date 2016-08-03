@@ -83,7 +83,7 @@ return -1;
 
 public static function SelectAllencuesta($id_sucuarsal)
 {
-$consulta = "select b.*,b.descripcion as descripcionpregunta ,c.*, c.descripcion as descripcionrespuesta from encuesta as a join pregunta as b on a.id_encuesta = b.id_encuesta join respuesta as c on b.id_pregunta=c.id_pregunta where a.estatus = 1 and a.id_sucursal = ?";
+$consulta = "select b.*,b.descripcion as descripcionpregunta ,c.*, c.descripcion as descripcionrespuesta, c.tipo_respuesta from encuesta as a join pregunta as b on a.id_encuesta = b.id_encuesta join respuesta as c on b.id_pregunta=c.id_pregunta where a.estatus = 1 and a.id_sucursal = ?";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
