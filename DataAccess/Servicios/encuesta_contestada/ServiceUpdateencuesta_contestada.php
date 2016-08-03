@@ -11,7 +11,7 @@ $hora = $objDatos->hora;
 $estatus = $objDatos->estatus;
 $numero_orden = $objDatos->numero_orden;
 $id_encuesta_contestada = $objDatos->id_encuesta_contestada;
-$metas = Meta::Updateencuesta_contestada($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden, $id_encuesta_contestada);
+$metas = MetaEC::Updateencuesta_contestada($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden, $id_encuesta_contestada);
 if ($metas) {
 
 $datos["estado"] = 1;

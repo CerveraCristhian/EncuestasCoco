@@ -6,7 +6,7 @@
 */
 require_once '../../Database.php';
 
-class Meta
+class MetaEC
 {
 
 function __construct()

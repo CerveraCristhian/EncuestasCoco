@@ -10,7 +10,7 @@ $fecha = $objDatos->fecha;
 $hora = $objDatos->hora;
 $estatus = $objDatos->estatus;
 $numero_orden = $objDatos->numero_orden;
-$metas = Meta::Insertencuesta_contestada($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden);
+$metas = MetaEC::Insertencuesta_contestada($id_cliente, $id_ecuesta, $id_mesero, $codigo, $fecha, $hora, $estatus, $numero_orden);
 if ($metas) {
 
 $datos["estado"] = 1;

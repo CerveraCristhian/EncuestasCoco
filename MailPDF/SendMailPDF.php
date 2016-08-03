@@ -56,6 +56,7 @@ function addChart($pdf,$data, $titulo){
 $pdf->Output("reporte.pdf",'F');
 //$pdf->Output();
 sendMail($email_enviar);
+//sendMail("st.buendia@gmail.com");
 //echo $email_enviar;
 
 function sendMail($emailSend){
@@ -106,7 +107,7 @@ function sendMail($emailSend){
   //Replace the plain text body with one created manually
   $mail->AltBody = 'This is a plain-text message body';
   //Attach an image file
-  $mail->addAttachment('report.pdf');
+  $mail->addAttachment('reporte.pdf');
   //send the message, check for errors
   if (!$mail->send()) {
     print json_encode(array(
