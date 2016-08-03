@@ -5,7 +5,13 @@ app.controller('quizController', function($scope, $http) {
     $scope.descripcion = null;
     $scope.id_pregunta = null;
     $scope.pregunta = [];
-    ActualizarContenido();
+    $scope.mesero = null;
+    $http.post("../../DataAccess/Servicios/mesero/ServiceSelectAllmesero.php")
+            .success(function(data) {
+                $scope.mesero = data;
+               
+            })
+            .error(function(error) {})
     $http.post("../../DataAccess/Servicios/pregunta/ServiceSelectAllEncuesta.php")
         .success(function(data) {
             $scope.pregunta = data;
@@ -13,6 +19,7 @@ app.controller('quizController', function($scope, $http) {
             document.body.style.background = "url('"+data.sucursal+"') no-repeat center center fixed";
             document.body.style.backgroundSize = "cover";
             $("#questions").hide();
+            
         })
         .error(function(error) {})
     $scope.loadPreguntas = function() {
@@ -22,6 +29,7 @@ app.controller('quizController', function($scope, $http) {
 
         }
     }
+  
 
     function Validaciones() {
         if ($scope.mail == undefined || $scope.telefono == undefined || $scope.meseroid == undefined || $scope.codigo == undefined) {
@@ -33,15 +41,7 @@ app.controller('quizController', function($scope, $http) {
 
     }
 
-    function ActualizarContenido() {
-
-        $http.post("../../DataAccess/Servicios/mesero/ServiceSelectAllmesero.php")
-            .success(function(data) {
-                $scope.mesero = data;
-            })
-            .error(function(error) {})
-
-    }
+   
 
     $scope.AsignaridMesero = function(){
 

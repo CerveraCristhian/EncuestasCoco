@@ -45,7 +45,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content" role="form">
                         <div class="modal-header">
-                            <h2>Registrar tus datos</h2>
+                            <h2>Registrar tus datos {{mesero}} </h2>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" ng-model="idencuesta" name="idencuesta" value="{{idencuesta}}"></input>
@@ -59,7 +59,7 @@
                                 <textarea id="message" name="message" type="text" class="form-control" placeholder="Mensaje"></textarea>
                             </div>
                             <div class="form-group">
-                                <span class="btn btn-primary" ng-click="loadPreguntas()">Realizar Encuesta</span>
+                                <span class="btn btn-primary" ng-click="loadPreguntas()">Realizar Encuesta  </span>
                             </div>
                         </div>
                         <div class="modal-footer text-muted">

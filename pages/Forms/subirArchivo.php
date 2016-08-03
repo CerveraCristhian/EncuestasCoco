@@ -24,10 +24,9 @@ $encodedData = str_replace(' ','+',$data[1]);
 $decodedData = base64_decode($encodedData);
 
 //Agregar fecha de subida a archivos sin fecha.
-if (substr_count($name, '-')<2) {
+
 	$name= $_SESSION["idSucursal"]. ".jpg";
-	# code...
-}
+
 if(file_put_contents($uploaddir.$name, $decodedData)) {
 	echo $name.":Subida exitosa";
 }

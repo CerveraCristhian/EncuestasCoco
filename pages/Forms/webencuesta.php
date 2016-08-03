@@ -33,7 +33,7 @@ session_start();
 </head>
 
 <body>
-<input type="hidden" ng-model= <?php echo '"fondo='.$_SESSION['idSucursal'].'/'.$_SESSION['idSucursal'].'.jpg"';?> name="idencuesta"></input>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js"></script>
     <div id="divsito" class="bg-info">
         <form id="userForm">
@@ -49,8 +49,7 @@ session_start();
                     
                         
                     </h3>
-                    }
-                    }
+                   
                 </center>
                 <div class="modal-dialog">
                     <div class="modal-content" role="form">
@@ -62,12 +61,15 @@ session_start();
                             <input type="hidden" ng-model="meseroid" name="meseroid" value="{{meseroid}}"></input>
                             <div class="form-group ">
                                 <input id="mail" name="mail" type="email" class="form-control" placeholder="Email" ng-model="mail">
+                             
                             </div>
                             <div class="form-group">
                                 <input id="phone" name="phone" type="tel" class="form-control" placeholder="Telefono" ng-model="telefono">
+                               
                             </div>
                              <div class="form-group">
                                 <select id="cmbEmpresa" class="form-control"   ng-model="meseroSelected" ng-change="AsignaridMesero()" ng-options="mesero.nombre for mesero in mesero.mesero">
+                               
                 </select>
                             </div>
                              <div class="form-group">
