@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="sendApp" ng-controller="sendController">
+  <head>
+    <meta charset="utf-8">
+    <title>Enviar resultados</title>
+    <script src="../../sweetalert-master/dist/sweetalert-dev.js"></script>
+  	<link rel="stylesheet" href="../../sweetalert-master/dist/sweetalert.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  	<script src="js/sendApp.js"></script>
+  </head>
+  <body>
+    <input type="text" ng-model="id_sucursal">{{id_sucursal}}
+    <button type="button" name="button" ng-click="Enviar()">Enviar</button>
+    <br>
+    {{datin}}
+  </body>
+</html>
