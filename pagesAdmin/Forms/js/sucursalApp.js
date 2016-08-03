@@ -8,6 +8,7 @@ app.controller('sucursalController', function ($scope, $http) {
     $scope.paquete = null;
     $scope.email = null;
     $scope.id_sucursal = null;
+    $scope.datin = null;
     $scope.sucursal = [];
 
     $scope.paquetes = [{

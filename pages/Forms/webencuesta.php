@@ -50,7 +50,7 @@
                         <div class="modal-body">
                             <input type="hidden" ng-model="idencuesta" name="idencuesta" value="{{idencuesta}}"></input>
                             <div class="form-group ">
-                                <input id="mail" name="mail" type="email" class="form-control" placeholder="Email" ng-model="gmail">
+                                <input id="mail" name="mail" type="email" class="form-control" placeholder="Email" ng-model="mail">
                             </div>
                             <div class="form-group">
                                 <input id="phone" name="phone" type="tel" class="form-control" placeholder="Telefono" ng-model="telefono">
