@@ -1,9 +1,10 @@
 <?php
+session_start();
 header('Content-type: application/json');
 require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
-$id_sucursal = $objDatos->id_sucursal;
 $nombre = $objDatos->nombre;
+$id_sucursal = $_SESSION['idSucursal'];
 $metas = Meta::Insertmesero($id_sucursal, $nombre);
 if ($metas) {
 

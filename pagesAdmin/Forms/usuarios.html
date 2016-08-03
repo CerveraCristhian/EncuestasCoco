@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="meseroApp" ng-controller="meseroController">
+<html ng-app="usuariosApp" ng-controller="usuariosController">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,7 @@
   <![endif]-->
   <!-- Placed js at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-<script src="js/meseroApp.js"></script>
+<script src="js/usuariosApp.js"></script>
 <script src="js/directivas.js"></script>
 
 
@@ -39,8 +39,9 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 
-  <ppc-header></ppc-header>
-  <ppc-aside></ppc-aside>
+ <ppc-header></ppc-header>
+ <ppc-aside></ppc-aside>
+
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -48,7 +49,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        mesero
+        usuarios
        
       </h1>
       <ol class="breadcrumb">
@@ -64,7 +65,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-         <h3 class="box-title"><center>mesero</center></h3>
+         <h3 class="box-title"><center>usuarios</center></h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fa fa-minus"></i></button>
@@ -77,10 +78,10 @@
 <div class="box-body">
                    
 <div class="form-group">
-                
-
-<label for="nombre">nombre</label><input type="text" class="form-control" name="nombre" id="nombre" placeholder="Capturar nombre" ng-model="nombre">
-
+<label for="usr_email">usr_email</label><input type="text" class="form-control" name="usr_email" id="usr_email" placeholder="Capturar usr_email" ng-model="usr_email">
+<label for="usr_password">usr_password</label><input type="text" class="form-control" name="usr_password" id="usr_password" placeholder="Capturar usr_password" ng-model="usr_password">
+<label for="usr_sucursal">usr_sucursal</label><input type="text" class="form-control" name="usr_sucursal" id="usr_sucursal" placeholder="Capturar usr_sucursal" ng-model="usr_sucursal">
+<label for="usr_usuarioid">usr_usuarioid</label><input type="text" class="form-control" name="usr_usuarioid" id="usr_usuarioid" placeholder="Capturar usr_usuarioid" ng-model="usr_usuarioid">
 
 </div>
                        
@@ -96,8 +97,10 @@
 <table class="table table-hover">
 <tr>
 
-<th>nombre</th>
-
+<th>usr_email</th>
+<th>usr_password</th>
+<th>usr_sucursal</th>
+<th>usr_usuarioid</th>
 
                             
 </tr>
@@ -105,15 +108,18 @@
                            
                            
 <form >
-<tr ng-repeat="item in mesero.mesero | filter:test">
+<tr ng-repeat="item in usuarios.usuarios | filter:test">
 
-
-<td>{{item.nombre}}</td>
-
+<td>{{item.usr_email}}</td>
+<td>{{item.usr_password}}</td>
+<td>{{item.usr_sucursal}}</td>
+<td>{{item.usr_usuarioid}}</td>
 
                              
 
-
+<td>
+<button ng-click="Editar(item)" class="btn btn-primary" >Editar</button>
+</td>
 <td>
 <button ng-click="EliminarSeleccionado(item)" class="btn btn-danger" >Eliminar</button>
 </td>
@@ -126,7 +132,7 @@
 
         </div>
         <!-- /.box-body -->
-      
+       
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->

@@ -40,7 +40,7 @@ app.controller('meseroController', function($scope, $http) {
 
             if ($scope.id_mesero == null) {
                 var parametros = {
-                  
+                    id_sucursal: $scope.id_sucursal.id_sucursal,
                     nombre: $scope.nombre,
                     id_mesero: $scope.id_mesero
                 }
@@ -61,7 +61,7 @@ app.controller('meseroController', function($scope, $http) {
                     })
             } else {
                 var parametros = {
-                 
+                    id_sucursal: $scope.id_sucursal,
                     nombre: $scope.nombre,
                     id_mesero: $scope.id_mesero
                 }

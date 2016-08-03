@@ -1,58 +1,29 @@
-var app = angular.module('meseroApp', ['directivas']);
-app.controller('meseroController', function($scope, $http) {
-    $scope.id_sucursal = null;
+var app = angular.module('empresaApp', ['directivas']);
+app.controller('empresaController', function($scope, $http) {
     $scope.nombre = null;
-    $scope.id_mesero = null;
-    $scope.mesero = [];
-
-
- $scope.empresa = [];
+    $scope.id_empresa = null;
+    $scope.empresa = [];
     $http.post("../../DataAccess/Servicios/empresa/ServiceSelectAllempresa.php")
         .success(function(data) {
             $scope.empresa = data;
         })
         .error(function(error) {})
-
-
-    $scope.OnChangeEmpresa = function(data) {
-        $scope.id_empresa = data.id_empresa;
-        var parametros = {
-            id_empresa: data.id_empresa
-        }
-        $scope.sucursal = [];
-        $http.post("../../DataAccess/Servicios/sucursal/ServiceSelectsucursalbyempresa.php", parametros)
-            .success(function(data) {
-                $scope.sucursal = data;
-            })
-            .error(function(error) {})
-
-    }
-
-
-
-    $http.post("../../DataAccess/Servicios/mesero/ServiceSelectAllmesero.php")
-        .success(function(data) {
-            $scope.mesero = data;
-        })
-        .error(function(error) {})
     $scope.Guardar = function() {
         if (true) {
 
-            if ($scope.id_mesero == null) {
+            if ($scope.id_empresa == null) {
                 var parametros = {
-                  
                     nombre: $scope.nombre,
-                    id_mesero: $scope.id_mesero
+                    id_empresa: $scope.id_empresa
                 }
-                $http.post("../../DataAccess/Servicios/mesero/ServiceInsertmesero.php", parametros)
+                $http.post("../../DataAccess/Servicios/empresa/ServiceInsertempresa.php", parametros)
                     .success(function(data) {
                         swal("¡Registro Guardado!", "¡Registro guardado correctamente!", "success")
-                        $scope.id_sucursal = null;
                         $scope.nombre = null;
-                        $scope.id_mesero = null;
-                        $http.post("../../DataAccess/Servicios/mesero/ServiceSelectAllmesero.php")
+                        $scope.id_empresa = null;
+                        $http.post("../../DataAccess/Servicios/empresa/ServiceSelectAllempresa.php")
                             .success(function(data) {
-                                $scope.mesero = data;
+                                $scope.empresa = data;
                             })
 
                     })
@@ -61,19 +32,17 @@ app.controller('meseroController', function($scope, $http) {
                     })
             } else {
                 var parametros = {
-                 
                     nombre: $scope.nombre,
-                    id_mesero: $scope.id_mesero
+                    id_empresa: $scope.id_empresa
                 }
-                $http.post("../../DataAccess/Servicios/mesero/ServiceUpdatemesero.php", parametros)
+                $http.post("../../DataAccess/Servicios/empresa/ServiceUpdateempresa.php", parametros)
                     .success(function(data) {
                         swal("¡Registro Guardado!", "¡Registro actualizado correctamente!", "success")
-                        $scope.id_sucursal = null;
                         $scope.nombre = null;
-                        $scope.id_mesero = null;
-                        $http.post("../../DataAccess/Servicios/mesero/ServiceSelectAllmesero.php")
+                        $scope.id_empresa = null;
+                        $http.post("../../DataAccess/Servicios/empresa/ServiceSelectAllempresa.php")
                             .success(function(data) {
-                                $scope.mesero = data;
+                                $scope.empresa = data;
                             })
 
                     })
@@ -82,9 +51,8 @@ app.controller('meseroController', function($scope, $http) {
         }
     }
     $scope.Editar = function(data) {
-        $scope.id_sucursal = data.id_sucursal;
         $scope.nombre = data.nombre;
-        $scope.id_mesero = data.id_mesero;
+        $scope.id_empresa = data.id_empresa;
     }
     $scope.EliminarSeleccionado = function(data) {
         swal({
@@ -98,9 +66,9 @@ app.controller('meseroController', function($scope, $http) {
         }, function() {
 
             var parametros = {
-                id_mesero: data.id_mesero
+                id_empresa: data.id_empresa
             }
-            $http.post("../../DataAccess/Servicios/mesero/ServiceDeletemesero.php", parametros)
+            $http.post("../../DataAccess/Servicios/empresa/ServiceDeleteempresa.php", parametros)
                 .success(function(data) {
                     swal("¡Eliminado!", "¡Registro eliminado correctamente!", "success");
                     ActualizarContenido();
@@ -115,9 +83,9 @@ app.controller('meseroController', function($scope, $http) {
 
     function ActualizarContenido() {
 
-        $http.post("../../DataAccess/Servicios/mesero/ServiceSelectAllmesero.php")
+        $http.post("../../DataAccess/Servicios/empresa/ServiceSelectAllempresa.php")
             .success(function(data) {
-                $scope.mesero = data;
+                $scope.empresa = data;
             })
             .error(function(error) {})
 

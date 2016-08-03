@@ -1,5 +1,8 @@
 <?php
-
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 /**
 * Representa el la estructura de las metas
 * almacenadas en la base de datos
@@ -14,12 +17,13 @@ function __construct()
 }
 public static function Insertrecompensas($descripcion)
 {
-$consulta = "INSERT INTO recompensas(descripcion) values (?)";
+$id_sucursal = $_SESSION['idSucursal'];
+$consulta = "INSERT INTO recompensas(descripcion,id_sucursal) values (?,?)";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute(array($descripcion));
+$comando->execute(array($descripcion,$id_sucursal));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 
@@ -31,12 +35,13 @@ return -1;
 }
 public static function SelectAllrecompensas()
 {
-$consulta = "SELECT * FROM recompensas";
+$id_sucursal = $_SESSION['idSucursal'];
+$consulta = "SELECT * FROM recompensas where id_sucursal =?";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute();
+$comando->execute(array($id_sucursal));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 

@@ -29,14 +29,14 @@ return $comando->fetchAll(PDO::FETCH_ASSOC);
 return -1;
 }
 }
-public static function SelectAllmesero()
+public static function SelectAllmesero($id_sucursal)
 {
-$consulta = "SELECT * FROM mesero";
+$consulta = "SELECT * FROM mesero where id_sucursal = ?";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute();
+$comando->execute(array($id_sucursal));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 

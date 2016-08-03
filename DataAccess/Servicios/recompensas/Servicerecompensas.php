@@ -8,6 +8,7 @@ function __construct()
 {	
 }
 public static function selectrecompensas($objDatos){
+	
 $metas = Meta::SelectAllrecompensas();
 if ($metas) {
 

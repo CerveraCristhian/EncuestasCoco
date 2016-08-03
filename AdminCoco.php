@@ -10,14 +10,14 @@
 	<script src="sweetalert-master/dist/sweetalert-dev.js"></script>
 	<link rel="stylesheet" href="sweetalert-master/dist/sweetalert.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-	<script src="loginApp.js"></script>
+	<script src="AdminCocoApp.js"></script>
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="wrap">
-					<p class="form-title">Log In - Encuestas</p>
+					<p class="form-title">Log In - Administrador PonleCoco</p>
 					<form id="userForm" class="login">
 						<input type="text" placeholder="email" ng-model="email">
 						<input type="password" placeholder="Password" ng-model="password"/>

@@ -2,7 +2,8 @@
 header('Content-type: application/json');
 require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
-$metas = Meta::SelectAllrecompensas();
+$id_sucursal = $_SESSION['idSucursal'];
+$metas = Meta::SelectAllrecompensas($id_sucursal);
 if ($metas) {
 
 $datos["estado"] = 1;

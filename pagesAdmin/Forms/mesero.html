@@ -77,7 +77,10 @@
 <div class="box-body">
                    
 <div class="form-group">
-                
+                <label for="id_empresa">Empresa</label>
+                <select id="cmbEmpresa" class="form-control"  ng-change="OnChangeEmpresa(empresaSelected)" ng-model="empresaSelected" ng-options="empresa.nombre for empresa in empresa.empresa">
+                </select>
+                <label for="id_sucursal">Sucursal</label><select id="cmbSucursal" class="form-control"  ng-model="id_sucursal" ng-options="sucursal.nombre for sucursal in sucursal.sucursal"> </select>
 
 <label for="nombre">nombre</label><input type="text" class="form-control" name="nombre" id="nombre" placeholder="Capturar nombre" ng-model="nombre">
 

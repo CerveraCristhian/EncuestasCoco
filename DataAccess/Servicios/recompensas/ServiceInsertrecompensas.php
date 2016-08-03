@@ -3,7 +3,8 @@ header('Content-type: application/json');
 require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
 $descripcion = $objDatos->descripcion;
-$metas = Meta::Insertrecompensas($descripcion);
+$id_sucursal = $_SESSION['idSucursal'];
+$metas = Meta::Insertrecompensas($descripcion,$id_sucursal);
 if ($metas) {
 
 $datos["estado"] = 1;
