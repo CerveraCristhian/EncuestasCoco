@@ -12,14 +12,14 @@ class Meta
 function __construct()
 {
 }
-public static function Insertrespuesta($id_pregunta, $descripcion)
+public static function Insertrespuesta($id_pregunta, $descripcion,$tipo_respuesta)
 {
-$consulta = "INSERT INTO respuesta(id_pregunta, descripcion) values (?, ?)";
+$consulta = "INSERT INTO respuesta(id_pregunta, descripcion,tipo_respuesta) values (?, ?,?)";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute(array($id_pregunta, $descripcion));
+$comando->execute(array($id_pregunta, $descripcion,$tipo_respuesta));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 
@@ -46,14 +46,14 @@ return $comando->fetchAll(PDO::FETCH_ASSOC);
 return -1;
 }
 }
-public static function Updaterespuesta($id_pregunta, $descripcion,$id_respuesta)
+public static function Updaterespuesta($id_pregunta, $descripcion,$tipo_respuesta,$id_respuesta)
 {
-$consulta = "UPDATE respuesta SET id_pregunta=?, descripcion=? where id_respuesta= ?";
+$consulta = "UPDATE respuesta SET id_pregunta=?, descripcion=?,tipo_respuesta=? where id_respuesta= ?";
 try {
 // Preparar sentencia
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
-$comando->execute(array($id_pregunta, $descripcion,$id_respuesta));
+$comando->execute(array($id_pregunta, $descripcion,$tipo_respuesta,$id_respuesta));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 

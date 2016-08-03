@@ -208,7 +208,8 @@ session_start();
                               <div class="form-group">
                                 <label for="tipo_pregunta">Tipo de Respuesta</label>
                                 <select name="tiporespuesta" id="tiporespuesta" ng-options="item as item.label for item in tipopregunta" ng-model="tiporespuestaSelected"
-                                class="form-control"></select>
+                                class="form-control" ng-change="TipoRespuestaSelected(tiporespuestaSelected)"></select>
+                                {{tiporespuestaSelected}}
                                 <label for="descripcionrespuesta">Descripcion</label><input type="text" class="form-control"
                                 name="descripcion" id="descripcionrespuesta{{item.id_pregunta}}" placeholder="Capturar descripcion"
                                 ng-model="item.descripcionrespuesta">

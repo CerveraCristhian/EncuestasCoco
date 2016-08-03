@@ -4,7 +4,8 @@ require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
 $id_pregunta = $objDatos->id_pregunta;
 $descripcion = $objDatos->descripcion;
-$metas = Meta::Insertrespuesta($id_pregunta, $descripcion);
+$tipo_respuesta = $objDatos->tipo_respuesta;
+$metas = Meta::Insertrespuesta($id_pregunta, $descripcion,$tipo_respuesta);
 if ($metas) {
 
 $datos["estado"] = 1;

@@ -410,7 +410,8 @@ app.controller('encuestaController', function($scope, $http) {
                 var parametros = {
                     id_pregunta: $scope.preguntaseleccionadaid,
                     descripcion: g.descripcionrespuesta,
-                    id_respuesta: $scope.id_respuesta
+                    id_respuesta: $scope.id_respuesta,
+                    tipo_respuesta : $scope.tiporespuestas
                 }
                 $http.post("../../DataAccess/Servicios/respuesta/ServiceInsertrespuesta.php", parametros)
                     .success(function(data) {
@@ -436,7 +437,8 @@ app.controller('encuestaController', function($scope, $http) {
                 var parametros = {
                     id_pregunta: $scope.preguntaseleccionadaid,
                     descripcion: g.descripcionrespuesta,
-                    id_respuesta: $scope.id_respuesta
+                    id_respuesta: $scope.id_respuesta,
+                    tipo_respuesta :$scope.tiporespuestas
                 }
                 $http.post("../../DataAccess/Servicios/respuesta/ServiceUpdaterespuesta.php", parametros)
                     .success(function(data) {
@@ -531,6 +533,10 @@ app.controller('encuestaController', function($scope, $http) {
             id: 3,
             label: 'Neutra'
         }];
+    }
+
+    $scope.TipoRespuestaSelected = function (data){
+        $scope.tiporespuestas = data.id;
     }
 
 });
