@@ -10,6 +10,7 @@ app.controller('quizController', function($scope, $http) {
             $scope.pregunta = data;
             $scope.idencuesta=data.pregunta[0].id_encuesta;
             $("#questions").hide();
+            document.body.style.background = "";
         })
         .error(function(error) {})
     $scope.loadPreguntas = function() {

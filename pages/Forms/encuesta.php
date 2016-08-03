@@ -36,6 +36,7 @@ session_start();
     <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular-rangy.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular-sanitize.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="css/dragndropstyle.css">
     <!--.......................-->
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -91,6 +92,39 @@ session_start();
                 
                 <label for="disculpa">Mensaje de Disculpa</label><div text-angular id="disculpa" ng-model="disculpa" style="min-height: 300px;display: block; height:300px; max-height:300px"></div>
               </div>
+
+                                           <div class="content dragndrop">
+                          <div id="drop-files" ondragover="return false">
+                            Arrastre los documentos aquí
+                          </div>
+
+                          <div id="uploaded-holder">
+                            <div id="dropped-files">
+                              <div id="upload-button">
+                                <a href="#" class="upload">¡Subir!</a>
+                                <a href="#" class="delete">Cancelar</a>
+                                <span>0 Files</span>
+                              </div>
+                            </div>
+                            <div id="extra-files">
+                              <div class="number">
+                                0
+                              </div>
+                              <div id="file-list">
+                                <ul></ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div id="loading">
+                            <div id="loading-bar">
+                              <div class="loading-color"> </div>
+                            </div>
+                            <div id="loading-content">¡Subiendo!</div>
+                          </div>
+
+
+                        </div>
               <div class="box-footer">
                 <button class="btn btn-primary" ng-click="Guardar()">Guardar</button>
               </div>
@@ -384,7 +418,10 @@ session_start();
       <!-- AdminLTE for demo purposes -->
       <script src="../../dist/js/demo.js"></script>
       <link href="../../plugins/bootstrap-switch-master/css/bootstrap-switch.css" rel="stylesheet">
-      <script src="../../plugins/bootstrap-switch-master/js/bootstrap-switch.js"></script>
+      <script src="../../plugins/bootstrap-switch-master/js/bootstrap-switch.js">
+        
+      </script>
+         <script src="js/dragndrop.js"></script>
       <style>
       .ta-editor,
       .ta-editor > .ta-bind {

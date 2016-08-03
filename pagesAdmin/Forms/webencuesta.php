@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../sweetalert-master/dist/sweetalert.css">
     <style type="text/css">
         body {
-            background: url('http://mxcity.mx/wp-content/uploads/2015/10/nobu.jpg') no-repeat center center fixed;
+            
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;

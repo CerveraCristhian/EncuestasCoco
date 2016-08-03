@@ -10,6 +10,7 @@ app.controller('quizController', function($scope, $http) {
         .success(function(data) {
             $scope.pregunta = data;
             $scope.idencuesta=data.pregunta[0].id_encuesta;
+            document.body.style.background = "url('http://mxcity.mx/wp-content/uploads/2015/10/nobu.jpg') no-repeat center center fixed;";
             $("#questions").hide();
         })
         .error(function(error) {})

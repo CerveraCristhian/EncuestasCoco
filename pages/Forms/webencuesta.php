@@ -1,4 +1,8 @@
+<?php 
+session_start();
+ ?>
 <!DOCTYPE html>
+
 <html ng-app="quizApp" ng-controller="quizController">
 
 <head>
@@ -11,7 +15,7 @@
     <link rel="stylesheet" href="../../sweetalert-master/dist/sweetalert.css">
     <style type="text/css">
         body {
-            background: url('http://mxcity.mx/wp-content/uploads/2015/10/nobu.jpg') no-repeat center center fixed;
+
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -29,6 +33,7 @@
 </head>
 
 <body>
+<input type="hidden" ng-model= <?php echo '"fondo='.$_SESSION['idSucursal'].'/'.$_SESSION['idSucursal'].'.jpg"';?> name="idencuesta"></input>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js"></script>
     <div id="divsito" class="bg-info">
         <form id="userForm">
@@ -36,11 +41,16 @@
                 <center>
                     <h1 class="titulin">
                       <?php
-                        session_start();
+                       
                         echo $_SESSION["nombre"];
                       ?>
                     </h1>
-                    <h3 class="titulin">Bienvenido a nuestro sistema de encuestas</h3>
+                    <h3 class="titulin">Bienvenido a nuestro sistema de encuestas 
+                    
+                        
+                    </h3>
+                    }
+                    }
                 </center>
                 <div class="modal-dialog">
                     <div class="modal-content" role="form">
