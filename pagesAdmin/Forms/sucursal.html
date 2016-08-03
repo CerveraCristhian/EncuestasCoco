@@ -95,6 +95,7 @@
                 
                 <form >
                   <tr ng-repeat="item in sucursal.sucursal | filter:test">
+
                     <td>{{item.nombreempresa}}</td>
                     <td>{{item.nombre}}</td>
                     <td>{{item.direccion}}</td>
@@ -108,6 +109,12 @@
                     </td>
                     <td>
                       <button ng-click="EliminarSeleccionado(item)" class="btn btn-danger" >Eliminar</button>
+                    </td>
+
+                     <td>
+                     <button ng-click="Enviar(item)" class="btn btn-success" ><i class="fa fa-paper-plane-o" aria-hidden="true">  Enviar Resultados</i></button>
+                      
+                      
                     </td>
                   </tr>
                 </form>
