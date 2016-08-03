@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../sweetalert-master/dist/sweetalert.css">
     <style type="text/css">
         body {
-            
+
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br>
             </div>
 
             <div class="container-fluid bg-info" id="questions">
