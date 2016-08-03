@@ -49,11 +49,20 @@
                         </div>
                         <div class="modal-body">
                             <input type="hidden" ng-model="idencuesta" name="idencuesta" value="{{idencuesta}}"></input>
+                            <input type="hidden" ng-model="meseroid" name="meseroid" value="{{meseroid}}"></input>
                             <div class="form-group ">
-                                <input id="mail" name="mail" type="email" class="form-control" placeholder="Email" ng-model="gmail">
+                                <input id="mail" name="mail" type="email" class="form-control" placeholder="Email" ng-model="mail">
                             </div>
                             <div class="form-group">
                                 <input id="phone" name="phone" type="tel" class="form-control" placeholder="Telefono" ng-model="telefono">
+                            </div>
+                             <div class="form-group">
+                                <select id="cmbEmpresa" class="form-control"   ng-model="meseroSelected" ng-change="AsignaridMesero()" ng-options="mesero.nombre for mesero in mesero.mesero">
+                </select>
+                            </div>
+                             <div class="form-group">
+                                <input id="codigo" name="codigo" type="text" class="form-control" placeholder="No. Ticket" ng-model="codigo">
+                                
                             </div>
                             <div class="form-group">
                                 <textarea id="message" name="message" type="text" class="form-control" placeholder="Mensaje"></textarea>
