@@ -2,7 +2,7 @@
 header('Content-type: application/json');
 require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
-$metas = Meta::SelectAllencuesta_contestada();
+$metas = MetaEC::SelectAllencuesta_contestada();
 if ($metas) {
 
 $datos["estado"] = 1;
