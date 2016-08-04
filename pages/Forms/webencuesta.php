@@ -100,7 +100,7 @@ session_start();
                         <div class="modal-body">
                             <div ng-repeat="report in value">
                                 <label>
-                                    <input type="radio" name="plolo[{{report.id_pregunta}}]" value="{{report.id_respuesta}}">{{report.descripcionrespuesta}}</input>
+                                    <input type="radio" name="plolo[{{report.id_pregunta}}]" value="{{report.id_respuesta}}$${{report.tipo_respuesta}}">{{report.descripcionrespuesta}}</input>
                                 </label>
                                 <br>
                             </div>
