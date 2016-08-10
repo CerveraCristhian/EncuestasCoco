@@ -3,7 +3,7 @@ header('Content-type: application/json');
 require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
 $id_encuesta = $objDatos->id_encuesta;
-$metas = Meta::Deleteencuesta($id_encuesta);
+$metas = MetaEncu::Deleteencuesta($id_encuesta);
 if ($metas) {
 
 $datos["estado"] = 1;

@@ -14,7 +14,7 @@ $bienvenida = $objDatos->bienvenida;
 $despedida = $objDatos->despedida;
 $disculpa = $objDatos->disculpa;
 $topemaximo = $objDatos->topemaximo;
-$metas = Meta::Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion,$id_recompensa,$emailenvio, $bienvenida,$despedida,$disculpa,$topemaximo);
+$metas = MetaEncu::Insertencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion,$id_recompensa,$emailenvio, $bienvenida,$despedida,$disculpa,$topemaximo);
 if ($metas) {
 
 $datos["estado"] = 1;

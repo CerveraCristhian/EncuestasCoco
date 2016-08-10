@@ -8,7 +8,7 @@ $fecha_activacion = $objDatos->fecha_activacion;
 $porcentaje = $objDatos->porcentaje;
 $fecha_finalizacion = $objDatos->fecha_finalizacion;
 $id_encuesta = $objDatos->id_encuesta;
-$metas = Meta::Updateencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion, $id_encuesta);
+$metas = MetaEncu::Updateencuesta($id_sucursal, $estatus, $fecha_activacion, $porcentaje, $fecha_finalizacion, $id_encuesta);
 if ($metas) {
 
 $datos["estado"] = 1;

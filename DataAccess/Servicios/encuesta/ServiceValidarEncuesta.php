@@ -3,7 +3,7 @@ header('Content-type: application/json');
 require 'Servicios.php';
 $objDatos = json_decode(file_get_contents("php://input"));
 $id_sucursal = $objDatos->id_sucursal;
-$metas = Meta::ValidarEncuesta($id_sucursal);
+$metas = MetaEncu::ValidarEncuesta($id_sucursal);
 if ($metas) {
 
 $datos["estado"] = 1;

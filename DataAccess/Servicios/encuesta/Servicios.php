@@ -6,7 +6,7 @@
 */
 require_once '../../Database.php';
 
-class Meta
+class MetaEncu
 {
 
 function __construct()
@@ -141,9 +141,9 @@ return -1;
 
 public static function Reporte($id_sucursal)
 {
-$consulta = "select d.id_pregunta, d.descripcion,c.descripcion as Respuesta,f.id_encuesta, count(*) as Count, f.emailenvio from encuesta_contestada as a join respuestas_contestadascliente as b 
-on a.id_encuesta_contestada = b.respuestas_contestadasclienteencuestaid join respuesta as c 
-on b.respuesta_contestadasclienterespuesta = c.id_respuesta join pregunta as d 
+$consulta = "select d.id_pregunta, d.descripcion,c.descripcion as Respuesta,f.id_encuesta, count(*) as Count, f.emailenvio from encuesta_contestada as a join respuestas_contestadascliente as b
+on a.id_encuesta_contestada = b.respuestas_contestadasclienteencuestaid join respuesta as c
+on b.respuesta_contestadasclienterespuesta = c.id_respuesta join pregunta as d
 on c.id_pregunta = d.id_pregunta join encuesta as f on a.id_ecuesta = f.id_encuesta where f.estatus = 1 and f.id_sucursal = ?
 group by descripcion,Respuesta, id_encuesta";
 try {
@@ -151,6 +151,24 @@ try {
 $comando = Database::getInstance()->getDb()->prepare($consulta);
 // Ejecutar sentencia preparada
 $comando->execute(array($id_sucursal));
+// Capturar primera fila del resultado
+return $comando->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+// Aquí puedes clasificar el error dependiendo de la excepción
+// para presentarlo en la respuesta Json
+return -1;
+}
+}
+
+public static function GetEncuestaByID($id_encuesta)
+{
+$consulta = "select * from encuesta where id_encuesta = ?";
+try {
+// Preparar sentencia
+$comando = Database::getInstance()->getDb()->prepare($consulta);
+// Ejecutar sentencia preparada
+$comando->execute(array($id_encuesta));
 // Capturar primera fila del resultado
 return $comando->fetchAll(PDO::FETCH_ASSOC);
 

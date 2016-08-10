@@ -2,11 +2,15 @@
 session_start();
 $encuesta = array();
 require '../../../MailPDF/PHPMailerLib/PHPMailerAutoload.php';
+$encuesta = null;
 if (isset($_POST)) {
     echo '<pre>';
     //print_r($_POST);
     require_once '../cliente/Servicios.php';
     $cliente = Meta::SelectClienteByEmail($_POST['mail']);
+    require_once '../encuesta/Servicios.php';
+    $encuesta = MetaEncu::GetEncuestaByID($_POST['idencuesta']);
+    //print_r($encuesta);
     if($cliente){
       //print_r($cliente);
       insertEncuestas($cliente);
